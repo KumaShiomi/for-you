@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,11 +15,22 @@
             font-family: 'Times New Roman', Times, serif;
             color: #2c2520;
             line-height: 1.8;
-            background-color: #faf6f0;
+            /* Romantic, slowly shifting ambient gradient background */
+            background: linear-gradient(135deg, #f5eae0 0%, #eddcd2 50%, #fff1e6 100%);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
         .letter-container {
@@ -27,11 +38,13 @@
             width: 100%;
             margin: 40px auto;
             position: relative;
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.96);
             padding: 50px 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(140, 109, 83, 0.1);
-            border: 1px solid #eaddcf;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(140, 109, 83, 0.15);
+            border: 1px solid rgba(234, 221, 207, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 2;
         }
         
         .header-decoration {
@@ -62,6 +75,7 @@
             margin-bottom: 24px;
             text-align: justify;
             color: #3d352e;
+            text-indent: 20px;
         }
         
         .divider {
@@ -79,26 +93,80 @@
             font-size: 16px;
             margin-bottom: 20px;
             font-style: italic;
+            text-align: justify;
         }
         
         .signature {
             font-family: 'Georgia', serif;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
             color: #8c6d53;
+            text-align: right;
+            margin-top: 20px;
+            padding-right: 10px;
         }
 
-        /* Smooth fade-in animation when she opens the page */
+        /* Ambient floating hearts layer */
+        .hearts-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: rgba(212, 163, 115, 0.12);
+            transform: rotate(-45deg);
+            bottom: -50px;
+            animation: floatUp 12s linear infinite;
+        }
+
+        .heart:before, .heart:after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(212, 163, 115, 0.12);
+            border-radius: 50%;
+        }
+
+        .heart:before { top: -10px; left: 0; }
+        .heart:after { left: 10px; top: 0; }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(-45deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-105vh) rotate(-45deg); opacity: 0; }
+        }
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .letter-container {
-            animation: fadeIn 1.5s ease-out;
+            animation: fadeIn 1.8s ease-out;
         }
     </style>
 </head>
 <body>
+
+<!-- Background Floating Layer -->
+<div class="hearts-container">
+    <div class="heart" style="left: 10%; animation-delay: 0s; animation-duration: 14s;"></div>
+    <div class="heart" style="left: 25%; animation-delay: 2s; animation-duration: 10s; width: 15px; height: 15px;"></div>
+    <div class="heart" style="left: 55%; animation-delay: 5s; animation-duration: 16s;"></div>
+    <div class="heart" style="left: 70%; animation-delay: 1s; animation-duration: 12s; width: 12px; height: 12px;"></div>
+    <div class="heart" style="left: 85%; animation-delay: 7s; animation-duration: 15s;"></div>
+</div>
 
 <div class="letter-container">
     <div class="header-decoration">✦ ⚜ ✦</div>
@@ -114,14 +182,16 @@
     </div>
     
     <div class="body-text">
-       Nam mừng vì Nam đã thích Giang. Một Giang luôn hứng thú và hào hứng với những thứ xung quanh mình, kể cả những thứ nhỏ nhất. Một Giang có thể thân thiện chào những người mà Giang quen. Một Giang nhiệt tình tham gia những hoạt động, hết mình cho nó. Một Giang tràn đầy năng lượng, năng nổ và siêu siêu ngầu luôn. Cùng lúc đó, Nam cũng thích một Giang ngại ngùng trước những người mà Giang không hay biết. Hay là một Giang đôi khi cũng ngốc nghếch, một Giang thi thoảng bỏ bữa hay sinh hoạt không điều độ cho lắm, một Giang mà luôn đòi chia đôi cho dù Nam đã bảo là để Nam bao rồi. Đặc biệt, Nam thích một Giang đã tin tưởng Nam để có thể chia sẻ những vui buồn, những khó khăn, những lúc mệt mỏi; đã cho Nam một cơ hội để có thể ngắm nhìn Giang ở gần hơn, có thể một phần nào đó hỗ trợ Giang.
+        Nam mừng vì Nam đã thích Giang. Một Giang luôn hứng thú và hào hứng với những thứ xung quanh mình, kể cả những thứ nhỏ nhất. Một Giang có thể thân thiện chào những người mà Giang quen. Một Giang nhiệt tình tham gia những hoạt động, hết mình cho nó. Một Giang tràn đầy năng lượng, năng nổ và siêu siêu ngầu luôn. Cùng lúc đó, Nam cũng thích một Giang ngại ngùng trước những người mà Giang không hay biết. Hay là một Giang đôi khi cũng ngốc nghếch, một Giang thi thoảng bỏ bữa hay sinh hoạt không điều độ cho lắm, một Giang mà luôn đòi chia đôi cho dù Nam đã bảo là để Nam bao rồi. Đặc biệt, Nam thích một Giang đã tin tưởng Nam để có thể chia sẻ những vui buồn, những khó khăn, những lúc mệt mỏi; đã cho Nam một cơ hội để có thể ngắm nhìn Giang ở gần hơn, có thể một phần nào đó hỗ trợ Giang.
     </div>
     
     <div class="body-text">
         Thực sự là khoảng thời gian một tháng không ngắn cũng không dài, chúng mình cũng đã cùng trải qua cả một kì finals cực kì mệt mỏi nè, Giang đã làm tốt lắm rồi đó. Nam chưa phải là một người bạn trai tốt nhất, cũng không phải là người tuyệt vời nhất, đôi khi cũng chưa đủ tinh tế, không để ý tới Giang nhiều. Ngoài ra cũng còn tiêu cực và đôi khi cũng dễ cô đơn nữa. Cơ mà Nam mong là Giang có thể kiên nhẫn với Nam một chút nha, vì Nam chỉ mong những điều tốt đẹp nhất, những gì hạnh phúc nhất với Giang mà thôi.
     </div>
+    
     <div class="body-text">
         Sắp tới khoảng thời gian hè hai đứa không có thời gian bên nhau nhiều nhưng mà Nam tin là hai đứa dù có xa cách đến mấy nhưng sẽ cùng nhau vượt qua được thôi. Giang cũng phải hứa là giữ gìn sức khỏe, ăn uống điều độ chứ không được bỏ bữa đâu đấy nhé. Khoảng cách địa lý một chút này coi như là một thử thách nhỏ để tụi mình học cách nhớ nhau nhiều hơn. Tụi mình sẽ cùng nhau cố gắng nhé!
+    </div>
     
     <div class="divider">❦</div>
     
