@@ -1,205 +1,367 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Letter For You</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-        
-        body {
-            margin: 0;
-            padding: 20px;
-            font-family: 'Times New Roman', Times, serif;
-            color: #2c2520;
-            line-height: 1.8;
-            /* Romantic, slowly shifting ambient gradient background */
-            background: linear-gradient(135deg, #f5eae0 0%, #eddcd2 50%, #fff1e6 100%);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-        }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One month with you</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blush: #FCE7E4;
+    --paper: #FFF8F5;
+    --wine: #43142B;
+    --rose: #D9455F;
+    --sun: #F4B860;
+    --serif-display: "Instrument Serif", Georgia, serif;
+    --serif-body: "Newsreader", Georgia, serif;
+    --sans: "DM Sans", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--blush);
+    color: var(--wine);
+    font-family: var(--serif-body);
+    -webkit-font-smoothing: antialiased;
+  }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .letter-container {
-            max-width: 650px;
-            width: 100%;
-            margin: 40px auto;
-            position: relative;
-            background: rgba(255, 255, 255, 0.96);
-            padding: 50px 40px;
-            border-radius: 16px;
-            box-shadow: 0 15px 35px rgba(140, 109, 83, 0.15);
-            border: 1px solid rgba(234, 221, 207, 0.6);
-            backdrop-filter: blur(5px);
-            z-index: 2;
-        }
-        
-        .header-decoration {
-            text-align: center;
-            margin-bottom: 30px;
-            color: #8c6d53;
-            font-size: 24px;
-            letter-spacing: 2px;
-        }
-        
-        .date-location {
-            font-style: italic;
-            text-align: right;
-            margin-bottom: 40px;
-            color: #5c4f43;
-            font-size: 14px;
-        }
-        
-        .salutation {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 25px;
-            color: #1a1512;
-        }
-        
-        .body-text {
-            font-size: 16px;
-            margin-bottom: 24px;
-            text-align: justify;
-            color: #3d352e;
-            text-indent: 20px;
-        }
-        
-        .divider {
-            text-align: center;
-            margin: 40px 0;
-            color: #d1c7bd;
-            font-size: 20px;
-        }
-        
-        .closing-section {
-            margin-top: 50px;
-        }
-        
-        .sign-off {
-            font-size: 16px;
-            margin-bottom: 20px;
-            font-style: italic;
-            text-align: justify;
-        }
-        
-        .signature {
-            font-family: 'Georgia', serif;
-            font-size: 22px;
-            font-weight: bold;
-            color: #8c6d53;
-            text-align: right;
-            margin-top: 20px;
-            padding-right: 10px;
-        }
+  /* ---------- Hero ---------- */
+  .hero {
+    min-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8vh 6vw 4vh;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .hero h1 {
+    font-family: var(--serif-display);
+    font-weight: 400;
+    font-size: clamp(3.6rem, 14vw, 10rem);
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+  .hero .for {
+    font-family: var(--sans);
+    font-size: clamp(1rem, 2.4vw, 1.25rem);
+    margin: 2rem 0 0;
+    max-width: 34ch;
+    line-height: 1.5;
+  }
 
-        /* Ambient floating hearts layer */
-        .hearts-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 1;
-            pointer-events: none;
-        }
+  /* ---------- Letter ---------- */
+  .letter-wrap { padding: 4vh 5vw 12vh; }
+  .letter {
+    background: var(--paper);
+    max-width: 680px;
+    margin: 0 auto;
+    padding: clamp(1.8rem, 6vw, 4rem);
+    border-radius: 4px;
+    box-shadow: 0 1px 0 rgba(67,20,43,.08), 0 24px 50px -28px rgba(67,20,43,.45);
+    transform: rotate(-.6deg);
+  }
+  .letter h2 {
+    font-family: var(--serif-display);
+    font-weight: 400;
+    font-size: clamp(2rem, 6vw, 3rem);
+    margin: 0 0 1.5rem;
+    line-height: 1.1;
+  }
+  .letter p {
+    font-size: clamp(1.1rem, 2.6vw, 1.3rem);
+    line-height: 1.75;
+    margin: 0 0 1.2em;
+  }
+  .letter .sign {
+    margin: 2rem 0 0;
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
 
-        .heart {
-            position: absolute;
-            display: block;
-            width: 20px;
-            height: 20px;
-            background: rgba(212, 163, 115, 0.12);
-            transform: rotate(-45deg);
-            bottom: -50px;
-            animation: floatUp 12s linear infinite;
-        }
+  /* ---------- Running gallery ---------- */
+  .gallery { padding: 4vh 0 14vh; overflow: hidden; }
+  .gallery h2 {
+    font-family: var(--serif-display);
+    font-weight: 400;
+    font-size: clamp(2rem, 6vw, 3.4rem);
+    margin: 0 6vw 2.5rem;
+    max-width: 1100px;
+    line-height: 1.1;
+  }
+  .row { overflow: hidden; padding: 1.2rem 0; }
+  .track {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    animation: run 60s linear infinite;
+  }
+  .row.reverse .track { animation-direction: reverse; animation-duration: 75s; }
+  .row:hover .track, .row:focus-within .track { animation-play-state: paused; }
+  @keyframes run {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
 
-        .heart:before, .heart:after {
-            content: "";
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: rgba(212, 163, 115, 0.12);
-            border-radius: 50%;
-        }
+  .card {
+    all: unset;
+    cursor: pointer;
+    flex: none;
+    width: clamp(170px, 42vw, 250px);
+    background: #fff;
+    padding: .7rem;
+    border-radius: 3px;
+    box-shadow: 0 14px 28px -16px rgba(67,20,43,.5);
+    transition: transform .2s ease;
+  }
+  .card:nth-child(4n+1) { transform: rotate(-2.5deg); }
+  .card:nth-child(4n+2) { transform: rotate(1.8deg) translateY(10px); }
+  .card:nth-child(4n+3) { transform: rotate(-1deg); }
+  .card:nth-child(4n)   { transform: rotate(2.6deg) translateY(6px); }
+  .card:hover { transform: rotate(0) scale(1.05); z-index: 2; }
+  .card:focus-visible { outline: 3px solid var(--rose); outline-offset: 4px; }
+  .card .ph {
+    aspect-ratio: 4 / 5;
+    width: 100%;
+    background: linear-gradient(135deg, var(--sun), var(--rose));
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-size: 2.4rem;
+    overflow: hidden;
+  }
+  .card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .card figcaption, .card .cap {
+    display: block;
+    padding: .7rem .2rem .1rem;
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: 1.2;
+    text-align: center;
+  }
 
-        .heart:before { top: -10px; left: 0; }
-        .heart:after { left: 10px; top: 0; }
+  /* ---------- Lightbox ---------- */
+  dialog {
+    border: 0;
+    padding: .9rem;
+    background: #fff;
+    border-radius: 4px;
+    max-width: min(94vw, 760px);
+    color: var(--wine);
+    overflow: visible;
+  }
+  dialog[open] { animation: zoomIn .35s cubic-bezier(.2, .8, .2, 1); }
+  dialog[open]::backdrop { animation: fadeIn .35s ease-out; }
+  @keyframes zoomIn {
+    from { opacity: 0; transform: scale(.55) rotate(-3deg); }
+    to   { opacity: 1; transform: scale(1) rotate(0); }
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  dialog::backdrop { background: rgba(67,20,43,.75); }
+  dialog img { width: 100%; max-height: 82vh; object-fit: contain; display: block; }
+  dialog .cap {
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: 1.4rem;
+    text-align: center;
+    padding: .8rem 0 1rem;
+  }
+  dialog button {
+    position: absolute; top: .5rem; right: .5rem;
+    width: 2.4rem; height: 2.4rem;
+    border-radius: 50%; border: 0;
+    background: var(--wine); color: #fff;
+    font-size: 1.2rem; cursor: pointer;
+  }
 
-        @keyframes floatUp {
-            0% { transform: translateY(0) rotate(-45deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-105vh) rotate(-45deg); opacity: 0; }
-        }
+  footer {
+    text-align: center;
+    font-family: var(--sans);
+    font-size: .9rem;
+    padding: 0 1rem 6vh;
+  }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .letter-container {
-            animation: fadeIn 1.8s ease-out;
-        }
-    </style>
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .track { animation: none; }
+    .row { overflow-x: auto; }
+    dialog[open], dialog[open]::backdrop { animation: none; }
+  }
+</style>
 </head>
 <body>
 
-<!-- Background Floating Layer -->
-<div class="hearts-container">
-    <div class="heart" style="left: 10%; animation-delay: 0s; animation-duration: 14s;"></div>
-    <div class="heart" style="left: 25%; animation-delay: 2s; animation-duration: 10s; width: 15px; height: 15px;"></div>
-    <div class="heart" style="left: 55%; animation-delay: 5s; animation-duration: 16s;"></div>
-    <div class="heart" style="left: 70%; animation-delay: 1s; animation-duration: 12s; width: 12px; height: 12px;"></div>
-    <div class="heart" style="left: 85%; animation-delay: 7s; animation-duration: 15s;"></div>
-</div>
+<header class="hero">
+  <h1 id="title">One month with you</h1>
+  <p class="for" id="forLine"></p>
+</header>
 
-<div class="letter-container">
-    <div class="header-decoration">✦ ⚜ ✦</div>
-    
-    <div class="date-location">
-        1/7/2026<br>
-    </div>
-    
-    <div class="salutation">Giang thân mến,</div>
-    
-    <div class="body-text">
-        Nam nghĩ là Nam làm cái này hơi sến súa một chút, cũng khá là cringey nữa, cơ mà Nam vẫn muốn khiến đây là một kỉ niệm của hai đứa nữa. Lúc cái này được gửi thì cùng là tròn 1 tháng rùi đó. Hôm đó Nam không biết Nam bị làm sao nữa, vừa ốm vừa thiếu ngủ xong hai đứa mình còn ngồi làm Toán nữa, cơ mà Nam không hối hận vì đã tỏ tình Giang đâu. 
-    </div>
-    
-    <div class="body-text">
-        Nam mừng vì Nam đã thích Giang. Một Giang luôn hứng thú và hào hứng với những thứ xung quanh mình, kể cả những thứ nhỏ nhất. Một Giang có thể thân thiện chào những người mà Giang quen. Một Giang nhiệt tình tham gia những hoạt động, hết mình cho nó. Một Giang tràn đầy năng lượng, năng nổ và siêu siêu ngầu luôn. Cùng lúc đó, Nam cũng thích một Giang ngại ngùng trước những người mà Giang không hay biết. Hay là một Giang đôi khi cũng ngốc nghếch, một Giang thi thoảng bỏ bữa hay sinh hoạt không điều độ cho lắm, một Giang mà luôn đòi chia đôi cho dù Nam đã bảo là để Nam bao rồi. Đặc biệt, Nam thích một Giang đã tin tưởng Nam để có thể chia sẻ những vui buồn, những khó khăn, những lúc mệt mỏi; đã cho Nam một cơ hội để có thể ngắm nhìn Giang ở gần hơn, có thể một phần nào đó hỗ trợ Giang.
-    </div>
-    
-    <div class="body-text">
-        Thực sự là khoảng thời gian một tháng không ngắn cũng không dài, chúng mình cũng đã cùng trải qua cả một kì finals cực kì mệt mỏi nè, Giang đã làm tốt lắm rồi đó. Nam chưa phải là một người bạn trai tốt nhất, cũng không phải là người tuyệt vời nhất, đôi khi cũng chưa đủ tinh tế, không để ý tới Giang nhiều. Ngoài ra cũng còn tiêu cực và đôi khi cũng dễ cô đơn nữa. Cơ mà Nam mong là Giang có thể kiên nhẫn với Nam một chút nha, vì Nam chỉ mong những điều tốt đẹp nhất, những gì hạnh phúc nhất với Giang mà thôi.
-    </div>
-    
-    <div class="body-text">
-        Sắp tới khoảng thời gian hè hai đứa không có thời gian bên nhau nhiều nhưng mà Nam tin là hai đứa dù có xa cách đến mấy nhưng sẽ cùng nhau vượt qua được thôi. Giang cũng phải hứa là giữ gìn sức khỏe, ăn uống điều độ chứ không được bỏ bữa đâu đấy nhé. Khoảng cách địa lý một chút này coi như là một thử thách nhỏ để tụi mình học cách nhớ nhau nhiều hơn. Tụi mình sẽ cùng nhau cố gắng nhé!
-    </div>
-    
-    <div class="divider">❦</div>
-    
-    <div class="closing-section">
-        <div class="sign-off">Một lần nữa, cảm ơn Giang vì đã thích Nam, bên Nam và cho Nam được ở cạnh Giang trong một tháng vừa qua, đã có những buổi đi dạo đêm, những cái nắm tay và những cú ôm vào buổi tối. Nam mong là chúng mình sẽ còn ở bên nhau hỗ trợ, tạo thêm thật nhiều kỉ niệm nữa nha. Nam yêu Giang nhiều.</div>
-        <div class="signature">Nam</div>
-    </div>
-</div>
+<main>
+  <section class="letter-wrap" id="letter">
+    <article class="letter">
+      <h2 id="letterHeading"></h2>
+      <div id="letterBody"></div>
+      <p class="sign" id="sign"></p>
+    </article>
+  </section>
 
+  <section class="gallery" aria-labelledby="galleryHeading">
+    <h2 id="galleryHeading">You and Me</h2>
+    <div class="row" id="row1"><div class="track"></div></div>
+    <div class="row reverse" id="row2"><div class="track"></div></div>
+  </section>
+</main>
+
+<footer id="footer"></footer>
+
+<dialog id="lightbox">
+  <button type="button" id="closeBtn" aria-label="Close photo">×</button>
+  <img id="lbImg" alt="">
+  <div class="cap" id="lbCap"></div>
+</dialog>
+
+<script>
+/*===================================================== */
+const CONFIG = {
+  pageTitle: "One month with you",
+  to: "My love",                 // her/his name or nickname
+  from: "Kuma",             // your name
+  heroLine: "Just a little note to say how much I love you and how happy I am to be with you.",
+
+  letterHeading: "Thank you for being here with me.",
+  message: [
+    "I have never been a guy who is good at expressing his feelings, but I want to try to do it for you. I want to tell you how much I love you and how happy I am to be with you.",
+    "They said that love is both a feeling and a choice, and I choose to love you every day. I choose to be with you, to support you, and to make you happy. I want to be the best version of myself for you, and I hope that I can make you feel loved and cherished.",
+    "I don't know what the future holds for us, but I know that I want to spend it with you. I want to create memories, share experiences, and build a life together. I want to be there for you through the ups and downs, and through the good and the ugly. I want to be your partner, your friend, and your lover.",
+  ],
+  signOff: "With all my love, Kuma",
+
+  /* Gallery */
+  photos: [
+    { src: "images/for you (1).jpg" },
+    { src: "images/for you (1).png" },
+    { src: "images/for you (2).jpg" },
+    { src: "images/for you (2).png" },
+    { src: "images/for you (3).jpg" },
+    { src: "images/for you (3).png" },
+    { src: "images/for you (4).jpg" },
+    { src: "images/for you (4).png" },
+    { src: "images/for you (5).jpg" },
+    { src: "images/for you (6).jpg" },
+    { src: "images/for you (7).jpg" },
+    { src: "images/for you (8).jpg" },
+    { src: "images/for you (9).jpg" },
+    { src: "images/for you (10).jpg" },
+    { src: "images/for you (11).jpg" },
+    { src: "images/for you (12).jpg" },
+    { src: "images/for you (13).jpg" },
+    { src: "images/for you (14).jpg" },
+    { src: "images/for you (15).jpg" },
+    { src: "images/for you (16).JPG" },
+    { src: "images/for you (17).JPG" },
+    { src: "images/for you (18).jpg" },
+    { src: "images/for you (19).jpg" },
+  ],
+
+  footer: "Made with love, for you.",
+};
+/* ===================================================== */
+
+const $ = (id) => document.getElementById(id);
+
+document.title = CONFIG.pageTitle;
+$("forLine").textContent = `For ${CONFIG.to}. ${CONFIG.heroLine}`;
+$("letterHeading").textContent = CONFIG.letterHeading;
+$("sign").textContent = CONFIG.signOff;
+$("footer").textContent = CONFIG.footer;
+
+/* Message paragraphs (textContent keeps it safe) */
+CONFIG.message.forEach((text) => {
+  const p = document.createElement("p");
+  p.textContent = text;
+  $("letterBody").appendChild(p);
+});
+
+/* Running gallery */
+const lightbox = $("lightbox");
+
+function openLightbox(photo, label, broken) {
+  const lbImg = $("lbImg");
+  const lbCap = $("lbCap");
+  if (broken) {
+    // Photo file was not found: say so instead of doing nothing
+    lbImg.style.display = "none";
+    lbCap.textContent = `Photo not found: ${photo.src}. Check the file name and that it is inside the images folder.`;
+    lbCap.hidden = false;
+  } else {
+    lbImg.style.display = "block";
+    lbImg.src = photo.src;
+    lbImg.alt = label;
+    lbCap.textContent = photo.caption || "";
+    lbCap.hidden = !photo.caption;
+  }
+  if (typeof lightbox.showModal === "function") lightbox.showModal();
+  else lightbox.setAttribute("open", "");   // very old browsers
+}
+
+function makeCard(photo) {
+  const card = document.createElement("button");
+  card.type = "button";
+  card.className = "card";
+  const label = photo.caption || "Our photo";
+  card.setAttribute("aria-label", `Open photo: ${label}`);
+
+  const ph = document.createElement("span");
+  ph.className = "ph";
+
+  const img = document.createElement("img");
+  img.alt = label;
+  img.decoding = "async";
+  img.addEventListener("error", () => {
+    img.remove();
+    ph.textContent = "♥";
+    card.dataset.broken = "1";
+  });
+  img.src = photo.src;
+  ph.append(img);
+  card.append(ph);
+
+  if (photo.caption) {            // captions only show if you add one
+    const cap = document.createElement("span");
+    cap.className = "cap";
+    cap.textContent = photo.caption;
+    card.append(cap);
+  }
+
+  card.addEventListener("click", () => openLightbox(photo, label, !!card.dataset.broken));
+  return card;
+}
+
+function fillRow(rowId, photos) {
+  let set = photos.slice();
+  while (set.length < 8) set = set.concat(photos); // keep the row wide enough
+  const track = document.querySelector(`#${rowId} .track`);
+  // Two identical halves so the loop is seamless
+  [...set, ...set].forEach((p, i) => {
+    const c = makeCard(p);
+    if (i >= set.length) c.setAttribute("aria-hidden", "true"), c.tabIndex = -1;
+    track.appendChild(c);
+  });
+}
+
+const photos = CONFIG.photos;
+fillRow("row1", photos);
+fillRow("row2", photos.slice().reverse());
+
+$("closeBtn").addEventListener("click", () => lightbox.close());
+lightbox.addEventListener("click", (e) => { if (e.target === lightbox) lightbox.close(); });
+</script>
 </body>
 </html>
